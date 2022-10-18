@@ -47,6 +47,7 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 gem 'rubocop', '~> 1.36', require: false
+gem 'simplecov', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
@@ -73,6 +74,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 gem 'devise', '~> 4.8'
