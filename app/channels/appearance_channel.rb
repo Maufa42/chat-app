@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'appearance_channel'
@@ -31,6 +33,6 @@ class AppearanceChannel < ApplicationCable::Channel
   private
 
   def broadcast_new_status(status)
-    current_user.update!(status: status)
+    current_user.update!(status:)
   end
 end

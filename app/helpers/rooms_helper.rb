@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module RoomsHelper
   def search_rooms
-    if params.dig(:name_search).present? && params.dig(:name_search).length > 0
+    if params[:name_search].present? && params[:name_search].length.positive?
       Room.public_rooms
           .where
           .not(id: current_user.joined_rooms.pluck(:id))
-          .where('name ILIKE ?', "%#{params.dig(:name_search)}%")
+          .where('name ILIKE ?', "%#{params[:name_search]}%")
           .order(name: :asc)
     else
       []

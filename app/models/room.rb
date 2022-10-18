@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Room < ApplicationRecord
   validates_uniqueness_of :name
   scope :public_rooms, -> { where(is_private: false) }
@@ -20,7 +22,7 @@ class Room < ApplicationRecord
   end
 
   def participant?(room, user)
-    room.participants.where(user: user).exists?
+    room.participants.where(user:).exists?
   end
 
   def latest_message
@@ -42,7 +44,7 @@ class Room < ApplicationRecord
                         locals: {
                           room: self,
                           user: last_message.user,
-                          last_message: last_message
+                          last_message:
                         })
     broadcast_update_to('rooms',
                         target: user_target,
@@ -50,8 +52,8 @@ class Room < ApplicationRecord
                         locals: {
                           room: self,
                           user: last_message.user,
-                          last_message: last_message,
-                          sender: sender
+                          last_message:,
+                          sender:
                         })
   end
 end

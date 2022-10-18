@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -30,7 +32,7 @@ class User < ApplicationRecord
     broadcast_replace_to 'user_status', partial: 'users/status', user: self
   end
 
-  def has_joined_room(room)
+  def joined_room?(room)
     joined_rooms.include?(room)
   end
 

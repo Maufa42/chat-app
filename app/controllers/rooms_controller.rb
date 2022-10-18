@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoomsController < ApplicationController
   include RoomsHelper
   before_action :authenticate_user!
@@ -63,6 +65,6 @@ class RoomsController < ApplicationController
   private
 
   def set_status
-    current_user.update!(status: User.statuses[:online]) if current_user
+    current_user&.update!(status: User.statuses[:online])
   end
 end
